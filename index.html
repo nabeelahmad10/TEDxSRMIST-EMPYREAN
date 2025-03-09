@@ -27,6 +27,10 @@
         padding: 0;
         margin: 0;
         box-sizing: border-box;
+        user-select: none;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
       }
 
       body {
@@ -98,6 +102,10 @@
       img {
         width: 100%;
         display: flex;
+        
+  pointer-events: none;
+  -webkit-touch-callout: none; /* Disable long press options on iOS */
+
       }
 
       a {
@@ -2803,7 +2811,17 @@ document.addEventListener("DOMContentLoaded", function () {
     console.log('Closing success message');
     document.getElementById('successMsg').classList.remove('show');
   }
+ // Disable right-click
+ document.addEventListener("contextmenu", function(event) {
+    event.preventDefault();
+  });
 
+  // Disable F12, Ctrl+Shift+I, and other dev tools shortcuts
+  document.addEventListener("keydown", function(event) {
+    if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
+      event.preventDefault();
+    }
+  });
   // On page load, check if a URL parameter indicates a successful payment
   window.addEventListener('DOMContentLoaded', () => {
     const params = new URLSearchParams(window.location.search);
