@@ -1015,6 +1015,13 @@
         flex: 0 0 350px;
         position: relative;
       }
+      .nocopy {
+    user-select: none; /* Prevent text selection */
+    -webkit-user-select: none; /* Safari, iOS */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    pointer-events: none; /* Prevents interactions */
+}
 
       .organizer__image::before {
         content: "";
@@ -2632,6 +2639,23 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
+   
+  document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener("selectstart", function (event) {
+            event.preventDefault(); // Block text selection
+        });
+
+        document.addEventListener("contextmenu", function (event) {
+            event.preventDefault(); // Block right-click
+        });
+
+        document.addEventListener("touchstart", function (event) {
+            if (event.touches.length > 1) { 
+                event.preventDefault(); // Prevents multi-touch actions
+            }
+        });
+    });
+
 
   // ------------------------
   // 5. Smooth Scrolling
