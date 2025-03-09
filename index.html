@@ -656,7 +656,33 @@
         position: relative;
         display: inline-block;
       }
-      
+      .success-message-banner {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #0c0c0d;
+    color: #fff;
+    padding: 20px;
+    border: 2px solid #640202;
+    border-radius: 8px;
+    z-index: 1000;
+    text-align: center;
+  }
+  .success-message-banner.show {
+    display: block;
+  }
+  .close-banner {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+  }
       /* Enhanced Responsive Styles for Registration Form */
       @media (max-width: 1024px) {
         .registration-container {
@@ -2489,7 +2515,13 @@
 </div>
 
 
-       
+<!-- Success Message Banner -->
+<div id="successMsg" class="success-message-banner">
+  <button class="close-banner" onclick="closeSuccessMessage()">&times;</button>
+  <div class="icon">&#10004;</div>
+  <h3>Thank You for Purchasing!</h3>
+  <p>We will send you the tickets on your mail very soon.</p>
+</div>
 
   <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -2749,7 +2781,26 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 });
+  // Function to show the success message
+  function showSuccessMessage() {
+    console.log('Showing success message');
+    document.getElementById('successMsg').classList.add('show');
+  }
 
+  // Function to close the success message
+  function closeSuccessMessage() {
+    console.log('Closing success message');
+    document.getElementById('successMsg').classList.remove('show');
+  }
+
+  // On page load, check if a URL parameter indicates a successful payment
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    console.log("Payment parameter:", params.get('payment'));
+    if (params.get('payment') === 'success') {
+      showSuccessMessage();
+    }
+  });
   </script>
   </body>
 </html>
