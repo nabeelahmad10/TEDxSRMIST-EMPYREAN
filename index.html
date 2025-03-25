@@ -33,6 +33,11 @@
         font-family: "Poppins", sans-serif;
         background-color: var(--primary-color);
         overflow-x: hidden;
+        -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none;  /* Safari/Chrome */
+      -moz-user-select: none;     /* Firefox (older) */
+      -ms-user-select: none;      /* Internet Explorer/Edge */
+      user-select: none;  
       }
 
       .section__container {
@@ -2516,8 +2521,12 @@
               <input type="text" id="phone" name="phone" required>
             </div>
             <div class="form-group">
-              <label for="address">Permanent Address</label>
-              <textarea id="address" name="address" rows="4"></textarea>
+              <label for="profession">Profession</label>
+              <input type="text" id="profession" name="profession" required></input>
+            </div>
+            <div class="form-group">
+              <label for="organisation name">Organisation Name</label>
+              <input type="text" id="organisation name" name="organisation name" required></input>
             </div>
             <!-- Button for submitting details -->
             <button type="submit" id="submit-details" class="payment-btn">
