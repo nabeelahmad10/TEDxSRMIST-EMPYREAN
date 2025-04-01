@@ -2529,6 +2529,10 @@
               <label for="organisation name">Organisation Name</label>
               <input type="text" id="organisation name" name="organisation name" required></input>
             </div>
+            <div class="form-group">
+              <label for="ticket-quantity">Number of Tickets</label>
+              <input type="number" id="ticket-quantity" name="ticket-quantity" required min="1" max="5" step="1">
+            </div>
             <!-- Button for submitting details -->
             <button type="submit" id="submit-details" class="payment-btn">
               Submit Details
@@ -2832,6 +2836,7 @@ document.addEventListener("DOMContentLoaded", function () {
       showSuccessMessage();
     }
   });
+  
   </script>
   </body>
 </html>
