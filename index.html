@@ -6,7 +6,7 @@
     <link
       href="https://cdn.jsdelivr.net/npm/remixicon@3.4.0/fonts/remixicon.css"
       rel="stylesheet"
-    /link>
+    />
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
     <title>TEDxSRMIST</title>
@@ -36,9 +36,9 @@
         overflow-x: hidden;
         -webkit-touch-callout: none; /* iOS Safari */
         -webkit-user-select: none;  /* Safari/Chrome */
-      -moz-user-select: none;     /* Firefox (older) */
-      -ms-user-select: none;      /* Internet Explorer/Edge */
-      user-select: none;  
+        -moz-user-select: none;     /* Firefox (older) */
+        -ms-user-select: none;      /* Internet Explorer/Edge */
+        user-select: none;  
       }
 
       .section__container {
@@ -116,6 +116,7 @@
         z-index: -1;
       }
 
+      /* Fixed navigation styles to ensure buttons are clickable */
       nav {
         max-width: var(--max-width);
         margin: auto;
@@ -124,10 +125,14 @@
         align-items: center;
         justify-content: space-between;
         gap: 2rem;
+        position: relative;
+        z-index: 100; /* Ensure nav is above other elements */
       }
 
       .nav__logo {
         max-width: 150px;
+        position: relative;
+        z-index: 101; /* Ensure logo is clickable */
       }
 
       .nav__links {
@@ -135,6 +140,8 @@
         display: flex;
         align-items: center;
         gap: 3rem;
+        position: relative;
+        z-index: 101; /* Ensure links are clickable */
       }
 
       .link a {
@@ -142,7 +149,7 @@
         padding-bottom: 0.75rem;
         color: var(--white);
         font-weight: 500;
-        transition: color 0.3s ease;
+        transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother transition */
       }
 
       .link a::after {
@@ -153,7 +160,7 @@
         left: 0;
         bottom: 0;
         background-color: var(--secondary-color);
-        transition: 0.3s;
+        transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother transition */
       }
 
       .link a:hover {
@@ -164,6 +171,7 @@
         width: 50%;
       }
 
+      /* Fixed header container to ensure proper layering */
       .header__container {
         position: relative;
         padding-top: 2rem;
@@ -171,11 +179,17 @@
         grid-template-columns: repeat(2, 1fr);
         align-items: center;
         gap: 4rem;
+        z-index: 1; /* Lower z-index than nav */
       }
 
       .header__blur {
         bottom: 5rem;
         right: 0;
+      }
+
+      .header__content {
+        position: relative;
+        z-index: 2; /* Ensure content is above background elements */
       }
 
       .header__content h4 {
@@ -204,8 +218,10 @@
         line-height: 1.6;
       }
 
+      /* Fixed header image positioning */
       .header__image {
         position: relative;
+        z-index: 1; /* Lower z-index than nav */
       }
 
       .header__image::before {
@@ -226,7 +242,7 @@
         max-width: 350px;
         margin: auto;
         filter: drop-shadow(0 10px 20px rgba(137, 1, 1, 0.3));
-        transition: transform 0.5s ease;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother transition */
       }
 
       .header__image:hover img {
@@ -254,7 +270,7 @@
         border: 2px solid var(--white);
         border-radius: 100%;
         cursor: pointer;
-        transition: 0.3s;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother transition */
       }
 
       .explore__nav span:hover {
@@ -262,7 +278,7 @@
         border-color: var(--secondary-color);
       }
 
-      /* Modified speaker section for horizontal scroll */
+      /* Improved speaker section for smoother horizontal scroll */
       .explore__container {
         overflow: hidden;
         position: relative;
@@ -275,6 +291,7 @@
         padding: 2rem 0;
         animation: scroll 30s linear infinite;
         width: max-content;
+        will-change: transform; /* Performance optimization */
       }
 
       .explore__grid:hover {
@@ -290,27 +307,29 @@
         }
       }
 
-      /* Speaker card flip effect */
+      /* Improved speaker card flip effect */
       .explore__card {
         flex: 0 0 250px;
         background: var(--primary-color-light);
         border-radius: 10px;
         overflow: hidden;
-        transition: all 0.3s ease;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother transition */
         height: 400px;
         box-shadow: 0 10px 25px rgba(255, 0, 0, 0.2);
         border: 1px solid rgba(100, 2, 2, 0.1);
         transform: translateY(0);
         perspective: 1000px;
         position: relative;
+        will-change: transform; /* Performance optimization */
       }
 
       .explore__card-inner {
         position: relative;
         width: 100%;
         height: 100%;
-        transition: transform 0.6s;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother transition */
         transform-style: preserve-3d;
+        will-change: transform; /* Performance optimization */
       }
 
       .explore__card:hover .explore__card-inner {
@@ -340,7 +359,7 @@
         width: 100%;
         height: 300px;
         object-fit: contain;
-        transition: transform 0.5s ease;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother transition */
       }
 
       .explore__card h4 {
@@ -357,48 +376,55 @@
         border-color: var(--secondary-color);
       }
 
-      /* Remaining styles remain unchanged for other sections */
+      /* Fixed class container styles */
       .class__container {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 2rem;
+        position: relative;
+        z-index: 1;
       }
 
       .class__image {
-  position: relative;
-  min-height: 500px;
-}
+        position: relative;
+        min-height: 500px;
+        z-index: 1;
+      }
 
-.class__image .class__img-1 {
-  position: absolute;
-  right: 0;
-  top: 0;
-  max-width: 500px;
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(137, 1, 1, 0.3);
-  transition: transform 0.5s ease;
-}
+      .class__image .class__img-1 {
+        position: absolute;
+        right: 0;
+        top: 0;
+        max-width: 500px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(137, 1, 1, 0.3);
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother transition */
+        z-index: 1;
+      }
 
-.class__image .class__img-2 {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  max-width: 350px; /* Increased from 300px to 350px */
-  border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(137, 1, 1, 0.3);
-  transition: transform 0.5s ease;
-}
+      .class__image .class__img-2 {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        max-width: 350px;
+        border-radius: 10px;
+        box-shadow: 0 10px 30px rgba(137, 1, 1, 0.3);
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1); /* Smoother transition */
+        z-index: 2;
+      }
 
-.class__image:hover .class__img-1 {
-  transform: translateY(-10px);
-}
+      .class__image:hover .class__img-1 {
+        transform: translateY(-10px);
+      }
 
-.class__image:hover .class__img-2 {
-  transform: translateY(10px);
-}
+      .class__image:hover .class__img-2 {
+        transform: translateY(10px);
+      }
 
       .class__content {
         padding: 2rem 0;
+        position: relative;
+        z-index: 2;
       }
 
       .class__content .section__header {
@@ -418,7 +444,7 @@
         line-height: 1.6;
       }
       
-      /* Timer Styles */
+      /* Improved Timer Styles */
       .timer-container {
         display: flex;
         justify-content: center;
@@ -435,7 +461,14 @@
         width: 80px;
         text-align: center;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
+      
+      .timer-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      }
+      
       .timer-value {
         font-size: 1.5rem;
         font-weight: 700;
@@ -477,6 +510,7 @@
         border-radius: 10px;
         box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
         border: 1px solid rgba(100, 2, 2, 0.2);
+        z-index: 3;
       }
 
       .join__card {
@@ -484,7 +518,7 @@
         display: flex;
         align-items: center;
         gap: 1rem;
-        transition: transform 0.3s ease;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .join__card:hover {
@@ -498,7 +532,7 @@
         background-color: var(--secondary-color-dark);
         border-radius: 50%;
         box-shadow: 0 5px 15px rgba(137, 1, 1, 0.3);
-        transition: transform 0.3s ease;
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .join__card:hover span {
@@ -605,7 +639,7 @@
         border-radius: 30px;
         cursor: pointer;
         font-weight: 500;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         margin: 0 0.25rem;
       }
 
@@ -634,9 +668,9 @@
         border-radius: 15px;
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         border: 1px solid rgba(100, 2, 2, 0.1);
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         display: none;
-        animation: fadeIn 0.5s ease forwards;
+        animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
       }
 
       @keyframes fadeIn {
@@ -663,32 +697,32 @@
         display: inline-block;
       }
       .success-message-banner {
-    display: none;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background: #0c0c0d;
-    color: #fff;
-    padding: 20px;
-    border: 2px solid #640202;
-    border-radius: 8px;
-    z-index: 1000;
-    text-align: center;
-  }
-  .success-message-banner.show {
-    display: block;
-  }
-  .close-banner {
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 1.5rem;
-    position: absolute;
-    top: 5px;
-    right: 10px;
-    cursor: pointer;
-  }
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: #0c0c0d;
+        color: #fff;
+        padding: 20px;
+        border: 2px solid #640202;
+        border-radius: 8px;
+        z-index: 1000;
+        text-align: center;
+      }
+      .success-message-banner.show {
+        display: block;
+      }
+      .close-banner {
+        background: none;
+        border: none;
+        color: #fff;
+        font-size: 1.5rem;
+        position: absolute;
+        top: 5px;
+        right: 10px;
+        cursor: pointer;
+      }
       /* Enhanced Responsive Styles for Registration Form */
       @media (max-width: 1024px) {
         .registration-container {
@@ -890,10 +924,11 @@
         border-radius: 10px;
         overflow: hidden;
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        transition: all 0.4s ease;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         z-index: 1;
         border: 2px solid transparent;
+        will-change: transform, box-shadow; /* Performance optimization */
       }
 
       .team__card::before {
@@ -905,7 +940,7 @@
         height: 100%;
         background: linear-gradient(to bottom, transparent 50%, rgba(0, 0, 0, 0.8) 100%);
         z-index: 2;
-        transition: opacity 0.4s ease;
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .team__card:hover {
@@ -919,8 +954,9 @@
         width: 100%;
         height: 280px;
         object-fit: cover;
-        transition: all 0.5s ease;
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
         filter: grayscale(100%);
+        will-change: transform, filter; /* Performance optimization */
       }
 
       .team__card:hover img {
@@ -943,7 +979,7 @@
         width: 100%;
         padding: 1.5rem;
         z-index: 3;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
         padding-top: 3rem;
       }
@@ -969,7 +1005,7 @@
         font-size: 0.9rem;
         font-weight: 600;
         text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         background-color: var(--secondary-color);
         display: inline-block;
         padding: 0.3rem 0.8rem;
@@ -989,7 +1025,7 @@
         z-index: 4;
         opacity: 0;
         transform: translateX(20px);
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .team__card:hover .team__social {
@@ -1003,7 +1039,7 @@
         background-color: var(--secondary-color);
         color: var(--white);
         border-radius: 50%;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1048,12 +1084,12 @@
         position: relative;
       }
       .nocopy {
-    user-select: none; /* Prevent text selection */
-    -webkit-user-select: none; /* Safari, iOS */
-    -moz-user-select: none; /* Firefox */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    pointer-events: none; /* Prevents interactions */
-}
+        user-select: none; /* Prevent text selection */
+        -webkit-user-select: none; /* Safari, iOS */
+        -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+        pointer-events: none; /* Prevents interactions */
+      }
 
       .organizer__image::before {
         content: "";
@@ -1065,7 +1101,7 @@
         border: 2px solid var(--secondary-color);
         border-radius: 10px;
         z-index: 0;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .organizer__image:hover::before {
@@ -1081,7 +1117,7 @@
         position: relative;
         z-index: 1;
         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-        transition: transform 0.5s ease;
+        transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .organizer__image:hover img {
@@ -1152,7 +1188,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .organizer__social a:hover {
@@ -1196,7 +1232,7 @@
         color: var(--secondary-color);
         border: 1px solid var(--secondary-color);
         border-radius: 50%;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -1232,7 +1268,7 @@
         display: block;
         margin-bottom: 1rem;
         color: var(--text_light);
-        transition: 0.3s;
+        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         position: relative;
         padding-left: 15px;
       }
@@ -1243,7 +1279,7 @@
         left: 0;
         color: var(--secondary-color);
         opacity: 0;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .footer__col > a:hover {
@@ -1266,6 +1302,7 @@
         margin-top: 2rem;
       }
 
+      /* Fixed hamburger menu styles */
       .hamburger {
         display: none;
         cursor: pointer;
@@ -1273,6 +1310,7 @@
         border: none;
         padding: 0.5rem;
         z-index: 1000;
+        position: relative;
       }
 
       .hamburger span {
@@ -1281,7 +1319,7 @@
         height: 3px;
         margin: 5px 0;
         background: var(--white);
-        transition: 0.3s;
+        transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .hamburger.active span:nth-child(1) {
@@ -1433,7 +1471,7 @@
         border-radius: 5px;
         color: var(--white);
         font-family: "Poppins", sans-serif;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .form-group input:focus,
@@ -1467,7 +1505,7 @@
         border: none;
         border-radius: 5px;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .verify-btn:hover {
@@ -1506,7 +1544,7 @@
         font-size: 1.1rem;
         font-weight: 600;
         cursor: pointer;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         margin-top: 1rem;
         text-align: center;
       }
@@ -1533,7 +1571,7 @@
         font-size: 1.5rem;
         cursor: pointer;
         z-index: 20;
-        transition: all 0.3s ease;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .close-registration:hover {
@@ -1557,7 +1595,7 @@
         max-width: 500px;
         width: 90%;
         box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
-        animation: fadeIn 0.5s ease forwards;
+        animation: fadeIn 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
       }
 
       .success-message h3 {
@@ -1787,7 +1825,7 @@
       
       .success-message-banner.show {
         display: block;
-        animation: fadeInBanner 0.5s ease forwards;
+        animation: fadeInBanner 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
       }
       
       @keyframes fadeInBanner {
@@ -1844,7 +1882,7 @@
         <li class="link"><a href="#team">Our Team</a></li>
         <li class="link mobile-register">
           <button class="btn" onclick="showRegistrationModal()">Buy Ticket</button>
-      
+        </li>
       </ul>
       <button class="btn desktop-register" onclick="showRegistrationModal()">Buy Ticket</button>
       <button class="hamburger">
@@ -1880,7 +1918,7 @@
       <div class="class__content">
         <h2 class="section__header"><span style="color: red;">EMPYREAN </span>: A VISION BEYOND THE STARS</h2>
         <p>
-          Empyrean, the official theme of TEDxSRMIST, invites you to look beyond the horizon of human knowledge, emotions, thoughts, and imagination. Join us on <span style="color: red;">April 9, 2025</span>, as we explore groundbreaking ideas that push the boundaries of possibility and inspire us to reach for the stars.
+          Empyrean, the official theme of TEDxSRMIST, invites you to look beyond the horizon of human knowledge, emotions, thoughts, and imagination. Join us on <span style="color: red;">April 9, 2025</span>, as we explore groundbreaking ideas that push the boundaries of possibility and inspire us to reach for the stars.
         </p>
         <!-- Modern Timer Section -->
         <div class="timer-container">
@@ -1919,7 +1957,7 @@
               <h4>Dr. Sudheer Kumar N</h4>
             </div>
             <div class="card-back">
-              <p>Sudheer Kumar N, CBPO at ISRO—India’s premier space research organization. With a wealth of experience in the aerospace industry, he takes us on a journey through the stars, sharing insights into the future of space exploration and the transformative role of innovation in shaping our cosmic aspirations.</p>
+              <p>Sudheer Kumar N, CBPO at ISRO—India's premier space research organization. With a wealth of experience in the aerospace industry, he takes us on a journey through the stars, sharing insights into the future of space exploration and the transformative role of innovation in shaping our cosmic aspirations.</p>
             </div>
           </div>
         </div>
@@ -1952,7 +1990,7 @@
               <h4>Disha Kasat</h4>
             </div>
             <div class="card-back">
-              <p>Disha Kasat, a cricketer and WPL champion with RCB, brings her experience in women’s cricket and an impressive track record to the stage. She shares insights into the future of women's sports and the role of innovation in shaping society.</p>
+              <p>Disha Kasat, a cricketer and WPL champion with RCB, brings her experience in women's cricket and an impressive track record to the stage. She shares insights into the future of women's sports and the role of innovation in shaping society.</p>
             </div>
           </div>
         </div>
@@ -1974,7 +2012,7 @@
               <h4>Prachi Goswami</h4>
             </div>
             <div class="card-back">
-              <p>Prachi Goswami, a pilot and aviation instructor, has journeyed from being a national-level swimmer to soaring in the aviation industry, inspiring transformation and enlightenment along the way.</p>
+              <p>Prachi Goswami, a pilot and aviation instructor, has journeyed from being a national-level swimmer to soaring in the aviation industry, inspiring transformation and enlightenment along the way.</p>
             </div>
           </div>
         </div>
@@ -1985,7 +2023,7 @@
               <h4>Prakruti Mishra</h4>
             </div>
             <div class="card-back">
-              <p>Prakruti Mishra—a beacon of stardom, whose captivating performances and unwavering dedication embody the transformative power of storytelling.</p>
+              <p>Prakruti Mishra—a beacon of stardom, whose captivating performances and unwavering dedication embody the transformative power of storytelling.</p>
             </div>
           </div>
         </div>
@@ -2008,7 +2046,7 @@
               <h4>Dr. Sudheer Kumar N</h4>
             </div>
             <div class="card-back">
-              <p>Sudheer Kumar N, CBPO at ISRO—India’s premier space research organization. With a wealth of experience in the aerospace industry, he takes us on a journey through the stars, sharing insights into the future of space exploration and the transformative role of innovation in shaping our cosmic aspirations.</p>
+              <p>Sudheer Kumar N, CBPO at ISRO—India's premier space research organization. With a wealth of experience in the aerospace industry, he takes us on a journey through the stars, sharing insights into the future of space exploration and the transformative role of innovation in shaping our cosmic aspirations.</p>
             </div>
           </div>
         </div>
@@ -2041,7 +2079,7 @@
               <h4>Disha Kasat</h4>
             </div>
             <div class="card-back">
-              <p>Disha Kasat, a cricketer and WPL champion with RCB, brings her experience in women’s cricket and an impressive track record to the stage. She shares insights into the future of women's sports and the role of innovation in shaping society.</p>
+              <p>Disha Kasat, a cricketer and WPL champion with RCB, brings her experience in women's cricket and an impressive track record to the stage. She shares insights into the future of women's sports and the role of innovation in shaping society.</p>
             </div>
           </div>
         </div>
@@ -2063,7 +2101,7 @@
               <h4>Prachi Goswami</h4>
             </div>
             <div class="card-back">
-              <p>Prachi Goswami, a pilot and aviation instructor, has journeyed from being a national-level swimmer to soaring in the aviation industry, inspiring transformation and enlightenment along the way.</p>
+              <p>Prachi Goswami, a pilot and aviation instructor, has journeyed from being a national-level swimmer to soaring in the aviation industry, inspiring transformation and enlightenment along the way.</p>
             </div>
           </div>
         </div>
@@ -2074,7 +2112,7 @@
               <h4>Prakruti Mishra</h4>
             </div>
             <div class="card-back">
-              <p>Prakruti Mishra—a beacon of stardom, whose captivating performances and unwavering dedication embody the transformative power of storytelling.</p>
+              <p>Prakruti Mishra—a beacon of stardom, whose captivating performances and unwavering dedication embody the transformative power of storytelling.</p>
             </div>
           </div>
         </div>
@@ -2348,6 +2386,17 @@
               </div>
             </div>
             <div class="team__card">
+              <img src="srishti.jpg" alt="Associate Lead">
+              <div class="team__info">
+                <h4>Shristi Sinha</h4>
+                <p>Associate Lead</p>
+              </div>
+              <div class="team__social">
+                <a href="#"><i class="ri-linkedin-fill"></i></a>
+                <a href="#"><i class="ri-instagram-line"></i></a>
+              </div>
+            </div>
+            <div class="team__card">
               <img src="krishna.jpg" alt="Associate Lead">
               <div class="team__info">
                 <h4>Krishna Kalyan</h4>
@@ -2397,8 +2446,8 @@
                 <a href="#"><i class="ri-instagram-line"></i></a>
               </div>
             </div> -->
-            <!-- <div class="team__card">
-              <img src="atul.png" alt="Lead">
+            <div class="team__card">
+              <img src="arnav.jpg" alt="Lead">
               <div class="team__info">
                 <h4>Arnav Gupta</h4>
                 <p>Lead</p>
@@ -2407,7 +2456,7 @@
                 <a href="#"><i class="ri-linkedin-fill"></i></a>
                 <a href="#"><i class="ri-instagram-line"></i></a>
               </div>
-            </div> -->
+            </div>
             <div class="team__card">
               <img src="sarthak.jpg" alt="Associate Lead">
               <div class="team__info">
@@ -2431,6 +2480,8 @@
               </div> 
             </div> 
           </div>
+        </div>
+      </div>
     </section>
 
     <!-- Redesigned Organizer Section -->
@@ -2476,7 +2527,7 @@
       </div>
       <div class="footer__col">
         <h4>Contact Us</h4>
-        <a href="mailto:tedxsrmist2022@gmail.com">Email</a>
+        <a href="/cdn-cgi/l/email-protection#225647465a51504f4b51561012101062454f434b4e0c414d4f">Email</a>
         <a href="https://www.google.com/maps/dir//R2FW%2BWM3,+Intra+College+Rd,+Potheri,+SRM+Nagar,+Kattankulathur,+Tamil+Nadu+603203/@12.8346269,79.9014502,11z/data=!4m8!4m7!1m0!1m5!1m1!1s0x3a52f70c95688435:0xfb2355e047e8b473!2m2!1d80.0466801!2d12.8247646?entry=ttu&g_ep=EgoyMDI1MDIxOS4xIKXMDSoASAFQAw%3D%3D">Address</a>
       </div>
       <div class="footer__col">
@@ -2504,7 +2555,7 @@
           "
           <span style="color: red;">EMPYREAN</span> - A VISION BEYOND THE STARS"
       </h3>      
-      Join us for an extraordinary day of inspiration and innovation at TEDxSRMIST. Our theme, Empyrean: A Vision Beyond the Stars, invites you to explore groundbreaking ideas that redefine the limits of possibility. Secure your spot today for this transformative experience!
+      Join us for an extraordinary day of inspiration and innovation at TEDxSRMIST. Our theme, Empyrean: A Vision Beyond the Stars, invites you to explore groundbreaking ideas that redefine the limits of possibility. Secure your spot today for this transformative experience!
       </div>
       <section id="register">
         <div>
@@ -2558,7 +2609,7 @@
   <p>We will send you the tickets on your mail very soon. Please be sure to check your SPAM folder as well!</p>
 </div>
 
-  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
 document.addEventListener("DOMContentLoaded", function () {
@@ -2796,6 +2847,8 @@ document.addEventListener("DOMContentLoaded", function () {
       modal.style.display = "flex";
       document.body.style.overflow = "hidden";
       document.body.style.position = "fixed";
+      document.body.style.width = "100%";
+      document.body.style.top = `-${window.scrollY}px`;
     }
   };
 
@@ -2803,8 +2856,12 @@ document.addEventListener("DOMContentLoaded", function () {
     var modal = document.getElementById("registrationModal");
     if (modal) {
       modal.style.display = "none";
+      const scrollY = document.body.style.top;
       document.body.style.overflow = "auto";
       document.body.style.position = "static";
+      document.body.style.width = "auto";
+      document.body.style.top = "";
+      window.scrollTo(0, parseInt(scrollY || '0') * -1);
     }
   };
 
