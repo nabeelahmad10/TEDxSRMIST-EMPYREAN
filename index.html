@@ -2737,6 +2737,17 @@ document.addEventListener("DOMContentLoaded", function () {
       closeNav();
     }
   });
+  document.addEventListener("contextmenu", (event) => event.preventDefault()); // Disable right-click
+
+document.addEventListener("keydown", (event) => {
+    if (
+        event.key === "F12" || 
+        (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J")) || 
+        (event.ctrlKey && event.key === "U")
+    ) {
+        event.preventDefault();
+    }
+});
 
   // ------------------------
   // 4. Domain Tabs (Team Section)
